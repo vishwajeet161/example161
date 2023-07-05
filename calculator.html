@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .container{
+            text-align: center;
+        }
+        .calc{
+            width:65px;
+            height: 42px;
+            margin: 2px;
+            font-size: large;
+        }
+        #result{
+            width: 280px;
+            height: 42px;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">CALCULATOR</h1>
+    <form name="form1" class="container">
+        <input type="text" name="result" id="result" style="font-size: large; text-align: right;">
+    </form>
+    <div class="container">
+        <input type="button" class="calc" id="7" value="7" onclick="fun('7')">
+        <input type="button" class="calc" id="8" value="8" onclick="fun('8')">
+        <input type="button" class="calc" id="9" value="9" onclick="fun('9')">
+        <input type="button" class="calc" id="+" value="+" onclick="fun('+')"><br>
+        <input type="button" class="calc" id="4" value="4" onclick="fun('4')">
+        <input type="button" class="calc" id="5" value="5" onclick="fun('5')">
+        <input type="button" class="calc" id="6" value="6" onclick="fun('6')">
+        <input type="button" class="calc" id="-" value="-" onclick="fun('-')"><br>
+        <input type="button" class="calc" id="1" value="1" onclick="fun('1')">
+        <input type="button" class="calc" id="2" value="2" onclick="fun('2')">
+        <input type="button" class="calc" id="3" value="3" onclick="fun('3')">
+        <input type="button" class="calc" id="X" value="*" onclick="fun('*')"><br>
+        <input type="button" class="calc" id="." value="." onclick="fun('.')">
+        <input type="button" class="calc" id="0" value="0" onclick="fun('0')">
+        <input type="button" class="calc" id="/" value="/" onclick="fun('/')">
+        <input type="button" class="calc" id="%" value="%" onclick="fun('%')"><br>
+        <input type="button" class="calc" id="=" value="=" onclick="res()" style="width: 140px;">
+        <input type="button" class="calc" id="clear" value="Clear" onclick="form1.result.value = ''">
+        <input type="button" class="calc" id="del" value="DEL" onclick="backspace()">
+
+    </div>
+
+    <script>
+        function fun(num){
+            document.getElementById("result").value +=num;
+        }
+        function res(){
+            var a = document.getElementById("result").value;
+            if(a){
+                document.getElementById("result").value = eval(a);
+            }
+        }
+        function backspace(){
+            var b = document.getElementById("result").value
+            document.getElementById("result").value = b.substring(0,b.length-1);
+        }
+    </script>
+</body>
+</html>

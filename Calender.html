@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <style>
+        *{
+            background-color: rgb(183, 226, 226);
+        }
+        #calender{
+            align-items: center;
+            border: 4px rgb(166, 196, 14);
+            border-radius: 5px;
+        }
+        table{
+            border-collapse: collapse;
+            width: 25%;
+        }
+        th, td{
+            border: 1px solid #ccc;
+            padding: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+        th{
+            background-color: #eee;
+            font-weight: bold;
+        }
+        td{
+            background-color: #fff;
+        }
+        td:hover{
+            background-color: #ddd;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   <div class="container" align="center">
+    <h1>Calender</h1>
+    YEAR : <select name="year" id="year">
+        <option value="">SELECT</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+    </select><br><br><br>
+    MONTH : <select name="month" id="month">
+        <option value="">SELECT</option>
+        <option value="0">JANUARY</option>
+        <option value="1">FEBRUARY</option>t
+        <option value="2">MARCH</option>
+        <option value="3">APRIL</option>
+        <option value="4">MAY</option>
+        <option value="5">JUNE</option>
+        <option value="6">JULY</option>
+        <option value="7">AUGUST</option>
+        <option value="8">SEPTEMBER</option>
+        <option value="9">OCTUBER</option>
+        <option value="10">NOVEMBER</option>
+        <option value="11">DECEMBER</option>
+    </select><br><br>
+    <button onclick="ShowCalender()">SHOW CALENDER</button>
+</div><br><br>
+    <div id="calender" align="center"></div>
+    <script>
+        function ShowCalender(){
+            const month = parseInt(document.getElementById("month").value);
+            const year = parseInt(document.getElementById("year").value);
+            const daysInMonth = new Date(year, month+1, 0).getDate();
+             console.log(daysInMonth);
+            const firstDay = new Date(year, month, 1).getDay();
+            console.log(firstDay);
+            let html = "<table><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr>";
+            let day = 1;
+            
+            for(let i=0;i<7;i++){
+                if(i<firstDay){
+                    html+="<td></td>";
+                }else{
+                    html+="<td>"+day+"</td>";
+                    day++;
+                }
+            }
+            html+='</tr>';
+            while(day<=daysInMonth){
+              html+="<tr>";
+                for(let j=0;j<7;j++){
+                    if(day<=daysInMonth){
+                        html+="<td>"+day+"</td>";
+                        day++;
+                    }else{
+                        html+="<td></td>";
+                    }
+                }
+                html+="</tr>";
+            }
+            html +="</table>";
+            document.getElementById("calender").innerHTML = html;
+        }
+    </script>
+</body>
+</html>

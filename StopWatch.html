@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> STOPWATCH </title>
+        <style>
+            .container{
+                margin-left: 700px;
+                background-color: rgb(7, 113, 7);
+                width:450px;
+                height: 500px;
+            }
+            .time{
+                font-size:70px;
+                color: rgb(172, 52, 8);
+                font-weight: 500;
+                margin-left: 80px;
+            }
+            .btn{
+                height:50px;
+                width:70px;
+                margin-right: 50px;
+            }
+            #saveLap{
+                width:320px;
+                margin-right: 40px;
+                margin-left: 50px;
+            }
+            #reset{
+                margin-right: 50px;
+            }
+            #start{
+                margin-left: 50px;
+            }
+            #laps{
+                margin-left: 200px;
+            }
+            #lapRecord{
+                margin-left: 200px;
+            }
+        </style>
+        <script>
+            var hour=00;
+            var minute=00;
+            var second=00;
+            var timer=false;
+            var count=0;
+
+            function startBtn () {
+                timer=true;
+                document.getElementById("start").disabled=true;
+                stopwatch();
+            };
+            function pauseBtn () {
+                timer=false;
+                document.getElementById("start").disabled=false;
+            };
+
+            function resetBtn (){
+                timer=false;
+                hour=00;
+                minute=00;
+                second=00;
+                document.getElementById("hour").innerHTML=hour+" : ";
+                document.getElementById("min").innerHTML=minute+" : ";
+                document.getElementById("sec").innerHTML=second;
+                document.getElementById("start").disabled=false;
+            }
+            function stopwatch(){
+                if(timer){
+                    count++;
+                    if(count==100){
+                        second++;
+                        count=0;
+                    }
+                    console.log(second);
+                    if(second==60){
+                        minute++;
+                        second=0;
+                    }
+                    if(minute==60){
+                        hour++;
+                        minute=0;
+                        second=0;
+                    }
+                
+                }
+                var hr=hour;
+                var min=minute;
+                var sec=second;
+                if(hour<10){
+                    hr="0"+hr;
+                }
+                if(minute<10){
+                    min="0"+min;
+                }
+                if(second<10){
+                    sec="0"+sec;
+                }
+                document.getElementById("hour").innerHTML=hr+" : ";
+                document.getElementById("min").innerHTML=min+" : ";
+                document.getElementById("sec").innerHTML=sec;
+                
+            }
+            setInterval(stopwatch,10);
+            
+            function lapBtn(){
+                document.getElementById("lapRecord").innerHTML+=hour+" : "+minute+" : "+second+"<br>";
+            }
+        </script>
+    </head>
+    <body>
+        <h1 align="center">STOPWATCH</h1>
+        <div class="container">
+            <div class="time">
+                <span class="digit" id="hour">00 :</span>
+                <span class="digit" id="min">00 :</span>
+                <span class="digit" id="sec">00</span>
+            </div><br><br>
+            <div class="buttons">
+                <button class="btn" id="start" onclick="startBtn()"> START </button>
+                <button class="btn" id="pause" onclick="pauseBtn()"> PAUSE </button>
+                <button class="btn" id="reset" onclick="resetBtn()"> RESET </button>
+                <br><br>
+                <button class="btn" id="saveLap" onclick="lapBtn()"> SAVE LAP </button>
+                <br><br>
+                <h4 id="laps"> Laps </h4>
+                <p id="lapRecord"></p>
+            </div>
+        </div>
+    </body>
+</html>

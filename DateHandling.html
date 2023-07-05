@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Date Handling </title>
+    </head>
+    <body>
+        <h1 align="center"> DATE HANDLING </h1>
+        <p id="p1"></p>
+        <p id="p2"></p>
+        <p id="p3"></p>
+        <label id="l1"> Enter First Date: </label>
+        <input type="date" id="in1"><br><br>
+        <label id="l2"> Enter Second Date: </label>
+        <input type="date" id="in2"><br><br>
+        <button onclick="date_diff_indays()"> CHECK DIFFERENCE </button><br><br>
+        <label id="res"> Difference in dates: </label>
+        <input type="number" id="l3"><br><br>
+        <button onclick="check_New_Year()"> GET DAYS SINCE NEW YEAR </button><br><br>
+        <label id="newResL"> Days Since New Year: </label>
+        <input type="number" id="newRes"><br><br>
+        <label> Enter Year 1:</label>
+        <input type="number" id="year1"><br><br>
+        <label> Enter Year 2: </label>
+        <input type="number" id="year2"><br><br>
+        <button onclick="check_Sunday()"> CHECK FOR WHEN 1ST JANUARY WAS A SUNDAY</button><br><br>
+        <p id="checkSundays"> </p>
+        <button onclick="checkChristmas()"> CHECK DAYS LEFT UNTIL CHRISTMAS </button><br><br>
+        <input type="number" id="christmas"><br><br>
+        <button onclick="checkBirthday()"> CHECK DAYS LEFT UNTIL BIRTHDAY </button><br><br>
+        <input type="number" id="birthday">
+        <script>
+            var day=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+            var date=new Date();
+            document.getElementById("p1").innerHTML="<b>Today is: </b>"+day[date.getDay()];
+            document.getElementById("p2").innerHTML="<b>Current Time is: </b>"+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+            document.getElementById("p3").innerHTML="<b>Current Date is: </b>"+date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
+            function date_diff_indays(){
+                var date1=document.getElementById("in1").value;
+                var date2=document.getElementById("in2").value;
+                var d1 = new Date(date1);
+                var d2 = new Date(date2);
+                var time_difference=Math.abs(d1-d2);
+                var days_difference=Math.ceil(time_difference/(1000*60*60*24));
+                document.getElementById("l3").value=days_difference;
+            }
+            function check_New_Year(){
+                var date = new Date();
+                var current=new Date(date.getTime());
+                var previous=new Date(date.getFullYear(),0,1);
+                var time_difference=Math.abs(current-previous);
+                var days_difference=Math.ceil(time_difference/(1000*60*60*24));
+                document.getElementById("newRes").value=days_difference;
+            }
+            function check_Sunday(){
+                var year1 = document.getElementById("year1").value;
+                var year2 = document.getElementById("year2").value;
+                for(var i=year1;i<=year2;i++){
+                    var date=new Date(i,0,1);
+                    if(date.getDay()==0){
+                        document.getElementById("checkSundays").innerHTML+="1st January was a sunday in year "+i+"<br>";
+                    }
+                }
+            }
+            function checkChristmas(){
+                var date=new Date();
+                var Christmas=new Date(date.getFullYear(),11,25);
+                if(date.getMonth()==11 && date.getDate()>25){
+                    Christmas.setFullYear(Christmas.getFullYear()+1);
+                }
+                var time_difference = Math.abs(date.getTime()-Christmas.getTime());
+                var days_difference = Math.ceil(time_difference/(1000*60*60*24));
+                document.getElementById("christmas").value=days_difference;
+            }
+            function checkBirthday(){
+                var date=new Date();
+                var birthday=new Date(date.getFullYear(),11,21);
+                if(date.getMonth()==11 && date.getDate>21 || date.getMonth()>11){
+                    birthday.setFullYear(birthday.getFullYear()+1);
+                }
+                var time_difference=Math.abs(date.getTime()-birthday.getTime());
+                var days_difference=Math.ceil(time_difference/(1000*60*60*24));
+                document.getElementById("birthday").value=days_difference;
+            }
+        </script>
+    </body>
+</html>

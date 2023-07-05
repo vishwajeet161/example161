@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body>
+    <form>
+        <label for="nam">Name</label>
+        <input type="text" name="name" id="nam" placeholder="Enter your name"><br><br>
+        <label for="Email">Email</label>
+        <input type="text" name="email" id="mail" placeholder="abc@def.com"><br><br>
+        <label for="pass">Password</label>
+        <input type="password" id ='pass'><br><br>
+        <label for="cnf">Confirm Password</label>
+        <input type="password" id="cnf"><br><br>
+        <input type="reset">
+        <input type="submit" onclick="fun()">
+    </form>
+    <script>
+        function fun(){
+            //Name validation
+            var nam = document.getElementById("nam").value;
+            var code;
+            for(var i=0;i<nam.length;i++){
+                 code = nam.charCodeAt(i);
+                if(code>=48 && code<=57){
+                    alert("Name field shoud not contain a number");
+                    break;
+                }
+            }
+            if(nam.length==0)
+            {
+                alert("Name field cannot be empty");
+            }
+            
+            //Email Validation
+            let email = document.getElementById('mail').value;
+            if(!(email.includes('@'))){
+                alert("Invalid Email id")
+            }
+    
+            //Password Validation
+            let pass = document.getElementById('pass').value;
+            let cnf = document.getElementById('cnf').value;
+            if(pass.length<6){
+                alert("Weak Password! length of the password shouldn't be less than 6");
+            }
+            else if(pass!=cnf){
+                alert("Confirm password doesn't match with password");
+            }
+        }
+    </script>
+</body>
+</html>

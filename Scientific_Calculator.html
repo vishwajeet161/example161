@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <style>
+        .container{
+            text-align: center;
+        }
+        .calc{
+            width:65px;
+            height: 42px;
+            margin: 2px;
+            font-size: large;
+        }
+        #result{
+            width: 425px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">SCIENTIFIC CALCULATOR</h1>
+    <form name="form1" class="container">
+        <input type="text" name="result" id="result" style="font-size: xx-large; text-align: right;">
+    </form>
+    <div class="container">
+        <input type="button" class="calc" id="1" value="1" onclick="fun('1')">
+        <input type="button" class="calc" id="2" value="2" onclick="fun('2')">
+        <input type="button" class="calc" id="3" value="3" onclick="fun('3')">
+        <input type="button" class="calc" id="del" value="DEL" onclick="backspace()">
+        <input type="button" class="calc" id="clear" value="C" onclick="form1.result.value = ''">
+        <input type="button" class="calc" id="=" value="=" onclick="res()"><br>
+        <input type="button" class="calc" id="4" value="4" onclick="fun('4')">
+        <input type="button" class="calc" id="5" value="5" onclick="fun('5')">
+        <input type="button" class="calc" id="6" value="6" onclick="fun('6')">
+        <input type="button" class="calc" id="-" value="-" onclick="fun('-')">
+        <input type="button" class="calc" id="%" value="%" onclick="fun('%')">
+        <input type="button" class="calc" id="cos" value="cos" onclick="fun('Math.cos(')"><br>
+        <input type="button" class="calc" id="7" value="7" onclick="fun('7')">
+        <input type="button" class="calc" id="8" value="8" onclick="fun('8')">
+        <input type="button" class="calc" id="9" value="9" onclick="fun('9')">
+        <input type="button" class="calc" id="X" value="*" onclick="fun('*')">
+        <input type="button" class="calc" id="n!" value="n!" onclick="fun('!')">
+        <input type="button" class="calc" id="sin" value="sin" onclick="fun('Math.sin(')"><br>
+        <input type="button" class="calc" id="." value="." onclick="fun('.')">
+        <input type="button" class="calc" id="0" value="0" onclick="fun('0')">
+        <input type="button" class="calc" id="," value="," onclick="fun(',')">
+        <input type="button" class="calc" id="+" value="+" onclick="fun('+')">
+        <input type="button" class="calc" id="/" value="/" onclick="fun('/')">
+        <input type="button" class="calc" id="tan" value="tan" onclick="fun('Math.tan(')"><br>
+        <input type="button" class="calc" id="E" value="E" onclick="fun('Math.E')">
+        <input type="button" class="calc" id="pi" value="pi" onclick="fun('Math.PI')">
+        <input type="button" class="calc" id="x^y" value="x^y" onclick="fun('Math.pow(')">
+        <input type="button" class="calc" id="(" value="(" onclick="fun('(')">
+        <input type="button" class="calc" id=")" value=")" onclick="fun(')')">
+        <input type="button" class="calc" id="log" value="log" onclick="fun('Math.log(')"><br>
+        <input type="button" class="calc" id="sqrt" value="sqrt" onclick="fun('Math.sqrt(')">
+        <input type="button" class="calc" id="LN2" value="LN2" onclick="fun('Math.LN2')">
+        <input type="button" class="calc" id="LN10" value="LN10" onclick="fun('Math.LN10')">
+        <input type="button" class="calc" id="log2E" value="log2E" onclick="fun('Math.log2(')">
+        <input type="button" class="calc" id="log10E" value="log10E" onclick="fun('Math.log10')">
+        <input type="button" class="calc" id="EXP" value="EXP" onclick="fun('Math.exp(')"><br>
+
+    </div>
+
+    <script>
+        function fun(num){
+            document.getElementById("result").value +=num;
+        }
+
+        function res(){
+            var a = document.getElementById("result").value;
+            if(document.getElementById("result").value.includes("!")) {
+          
+            var size = a.length;
+            var n = Number(document.getElementById("result").value= a.substring(0, size-1));
+            var f = 1;
+            
+            for(var i = 2; i <= n; i++)
+                f = f*i;
+            document.getElementById("result").value = f;
+            }
+            else if(a!=null){
+                document.getElementById("result").value = eval(a);
+            }
+        }
+        function backspace(){
+            var b = document.getElementById("result").value;
+            document.getElementById("result").value = b.substring(0,b.length-1);
+        }
+    </script>
+</body>
+</html>

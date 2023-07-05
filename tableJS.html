@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>TABLE</h1>
+    <table border = "2" cellpadding = "5" cellspacing="0">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+        </tr>
+        <tr>
+            <td class="prmpt">NULL</td>
+            <td class="prmpt">NULL</td>
+            <td class="prmpt">NULL</td>
+        </tr>
+    </table>
+    <script>
+        function fun(){
+            var name = prompt("Enter your name");
+            var age = prompt("Enter your age");
+            var sal = prompt("Enter your salary");
+        if(name!=""){
+            document.getElementsByClassName("prmpt")[0].innerHTML = name;
+        }
+        if(age!=""){
+            document.getElementsByClassName("prmpt")[1].innerHTML = age;
+        }
+        if(sal!=""){
+            document.getElementsByClassName("prmpt")[2].innerHTML = sal;
+        }
+    }
+        setTimeout(fun,1000);
+    </script>
+</body>
+</html>

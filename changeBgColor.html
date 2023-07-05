@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> background </title>
+    </head>
+    <body onclick="change()">
+        <div class="container">
+            <h1 id="text">Click to change background!</h1>
+            <script>
+                function change(){
+                    var a = Math.floor(Math.random()*0xFFFFFF).toString(16);
+                    document.body.style.backgroundColor="#"+a;
+                }
+            </script>
+        </div>
+    </body>
+</html>
